@@ -8,7 +8,8 @@ const synth = new Tone.FMSynth();
 const drum = new Tone.AMSynth();
 const metal = new Tone.Synth({
 	"frequency"  : 45 ,
-	"envelope"  : {
+	"envelope"  : 
+  {
 		"attack"  : 0.001 ,
 		"decay"  : 0.004 ,
 		"release"  : 0.02
@@ -23,18 +24,20 @@ synth.connect(reverb);
 drum.connect(reverb);
 metal.connect(reverb);
 
-const pingPong = new Tone.PingPongDelay().toDestination({
+const pingPong = new Tone.PingPongDelay().toDestination(
+  {
   "delayTime": "4n",
   "feedback": 0.2,
   "wet": 0.5
-});
+  });
 
 
 
 synth.connect(pingPong);
 
 
-let notes = {
+let notes = 
+{
   'a': 'C5',
   's': 'D5',
   'd': 'E5',
@@ -47,14 +50,16 @@ let notes = {
 
 
 
-function setup() {
+function setup() 
+{
   createCanvas(width, height);
 
   synth.release = .002;
   synth.resonance = 0.08;
 
   slider = new Nexus.Slider('#slider');
-  slider.on('change', (v)=>{
+  slider.on('change', (v)=>
+  {
     pingPong.delayTime = v;
   })
 }
@@ -69,7 +74,8 @@ function draw()
   text("A S D F G H J K", width / 2, 60);
 }
 
-function keyPressed() {
+function keyPressed() 
+{
   let toPlay = notes[key];
   console.log(toPlay);
   synth.triggerAttackRelease(toPlay, 0.05);
