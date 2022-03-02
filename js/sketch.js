@@ -58,9 +58,9 @@ function setup()
   synth.resonance = 0.08;
 
   slider = new Nexus.Slider('#slider');
-  slider.on('change', (v)=>
+  slider.on('change', ()=>
   {
-    pingPong.delayTime = v;
+    pingPong.delayTime.value = slider.value;
   })
 }
 
